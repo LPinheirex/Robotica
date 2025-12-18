@@ -1,0 +1,21 @@
+<launch>
+  <!-- Inicia o Gmapping -->
+  <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
+    <param name="base_frame" value="base_link" /> <!-- Frame base do robô -->
+    <param name="odom_frame" value="odom" />       <!-- Frame da odometria -->
+    <param name="map_frame" value="map" />         <!-- Frame do mapa -->
+    <param name="maxUrange" value="1.0" />        <!-- Alcance máximo do LIDAR (em metros) -->
+    <param name="minimumScore" value="6" />      <!-- Qualidade mínima para uma leitura ser usada -->
+    <param name="linearUpdate" value="0.1" />      <!-- Atualização do mapa após mover 20 cm -->
+    <param name="angularUpdate" value="0.1" />     <!-- Atualização do mapa após girar 0.1 rad -->
+    <param name="particles" value="30" />          <!-- Número de partículas usadas no filtro -->
+    <param name="xmin" value="-5.0" />            <!-- Limites do mapa (em metros) -->
+    <param name="ymin" value="-5.0" />
+    <param name="xmax" value="5.0" />
+    <param name="ymax" value="5.0" />
+    <param name="delta" value="0.05" />            <!-- Resolução do mapa (em metros/pixel) -->
+    <param name="iterations" value="10" />
+     <!-- Configuração do tópico do scan -->
+    <remap from="scan" to="/scan" />
+  </node>
+</launch>
